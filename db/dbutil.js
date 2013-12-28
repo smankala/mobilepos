@@ -1,10 +1,12 @@
 var mongode = require('mongode');
 var assert = require('assert');
 var settings = require('../util/config');
+var connString =  "mongodb://srmankala:Santhosh12@ds061298.mongolab.com:61298/managemulti";
 
 function insertorder(order){
 	console.log("inserting order"+order);
-	var conn = mongode.connect('mongodb://'+config.dbhost+':'+config.dbport+'/'+config.db);
+	 var conn = mongode.connect(connString);
+	//var conn = mongode.connect('mongodb://'+config.dbhost+':'+config.dbport+'/'+config.db);
 	var collection = conn.collection(config.order);
 	collection.insert(order, {safe:true}, function(err, objects) {
  		 	if (err) console.warn(err.message);
@@ -13,7 +15,8 @@ function insertorder(order){
 
 function insertmenu(item,res){
 	console.log("inserting item"+item);
-	var conn = mongode.connect('mongodb://'+config.dbhost+':'+config.dbport+'/'+config.db);
+	var conn = mongode.connect(connString);
+	//var conn = mongode.connect('mongodb://'+config.dbhost+':'+config.dbport+'/'+config.db);
 	var collection = conn.collection(config.menu);
 	var response ={}; 
 	collection.insert(item, {safe:true}, function(err, objects) {
@@ -34,7 +37,8 @@ function insertmenu(item,res){
 }
 
 function getmenu(res,query){
-	var conn = mongode.connect('mongodb://'+config.dbhost+':'+config.dbport+'/'+config.db);
+    var conn = mongode.connect(connString);
+	//var conn = mongode.connect('mongodb://'+config.dbhost+':'+config.dbport+'/'+config.db);
 	var collection = conn.collection(config.menu);
 	collection.find(query,{_id:0}).toArray(function(err,results){
 			if(err){ 
@@ -52,7 +56,8 @@ function getmenu(res,query){
 }
 
 function showorder(res,query){
-	var conn = mongode.connect('mongodb://'+config.dbhost+':'+config.dbport+'/'+config.db);
+    var conn = mongode.connect(connString);
+	//var conn = mongode.connect('mongodb://'+config.dbhost+':'+config.dbport+'/'+config.db);
 	var collection = conn.collection(config.order);
 	collection.find(query).toArray(function(err,results){
 			if(err){ 
