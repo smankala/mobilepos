@@ -1,21 +1,17 @@
-var http = require('http');
-var url = require('url');
+/**
+ * New node file
+ */
+ 
+var server = require("./serverutil");
+var router = require("./router");
+var requesthandler =require("./requesthandler");
+var config = require("./util/config");
 
-function start(host,port,route,handle){
-	function onRequest(req,res,conn) {
-			var parse = url.parse(req.url,"true");
-			var postdata = "";
-			req.addListener("data",function(chunk){
-				postdata += chunk;
-			//	console.log("received post data"+chunk ) ;
-			});
-			
-			req.addListener("end",function(chunk){
-					route(handle,parse,res,postdata,conn);
-			});
-	}
-	http.createServer(onRequest).listen(port,host);
-	console.log('Server running at http://'+host+":"+port);
-}	
+var handle = {}
+handle["/showorder"] = requesthandler.showorder;
+handle["/neworder"] = requesthandler.neworder;
+handle["/getmenu"] = requesthandler.getmenu;
+handle["/insertmenuitem"] = requesthandler.insertmenuitem;
 
-exports.start = start;
+server.start(config.host,config.port,router.route,handle);
+
