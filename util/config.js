@@ -6,6 +6,7 @@ var DBNAME 	 = "managemulti";
 var MENUCOLLECTION = "menu";
 var ORDERCOLLECTION = "order";
 
+
 config 		= {};
 config.host		= HOSTNAME;
 config.port 	= PORT;

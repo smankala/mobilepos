@@ -2,7 +2,7 @@
 
 function route(handle,parse,res,postdata,conn){
 	if( typeof handle[parse.pathname] === "function" ){
- 			console.log('found handle for'+ parse.pathname );
+ 			console.log('found handle for'+ parse.pathname +'query is '+parse.query.s);
 	 		 handle[parse.pathname](res,parse.query,postdata);
  	}
 	else

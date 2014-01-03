@@ -45,7 +45,7 @@ function neworder(res,query,postdata){
 function insertmenuitem(res,query,postdata){
  	res.writeHead(200, {'Content-Type': 'text/plain'});
  	var menuitem = JSON.parse(postdata);
-	var items = menuitem.items;
+	var items = menuitem.menuitems;
 	var i=0;
 	for(i=0;i<items.length;i++ ){
 		dbutil.insertmenu(items[i],res );
