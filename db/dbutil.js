@@ -32,7 +32,6 @@ function insertmenu(item,res){
  		var responseStr = JSON.stringify(response); 	
  		res.writeHead(200, {'Content-Type': 'text/plain'});
  		res.write(responseStr);
-  		res.end();
 	});
 }
 
