@@ -22,11 +22,11 @@ function insertmenu(item,res){
 	collection.insert(item, {safe:true}, function(err, objects) {
  		 	if (err) {
  		 		console.warn(err.message);
- 		 		response.status=1;
+ 		 		response.status=0;
  		 	}
  		 	else
  		 	{
- 		 		response.status=0;
+ 		 		response.status=1;
  		 	}
  		
  		var responseStr = JSON.stringify(response); 	
