@@ -44,13 +44,10 @@ function neworder(res,query,postdata){
 
 function insertmenuitem(res,query,postdata){
  	res.writeHead(200, {'Content-Type': 'text/plain'});
- 	var menuitem = JSON.parse(postdata);
-	var items = menuitem.menuitems;
-	var i=0;
-	for(i=0;i<items.length;i++ ){
-		dbutil.insertmenu(items[i],res );
-	}
-	res.end();
+ 	var data = '{"menuitems":[{"itemcategory":"Appetizer","itemdesc":"test","itemimage":"","itemname":"test","itemprice":"23"}]}';
+ 	var menuitem = JSON.parse(data);
+	var items = menuitem.menuitems
+	dbutil.insertmenu(items[0],res );
 }
  
  exports.showorder = showorder;
